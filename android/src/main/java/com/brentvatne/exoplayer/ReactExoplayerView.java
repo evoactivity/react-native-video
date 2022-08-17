@@ -277,7 +277,8 @@ class ReactExoplayerView extends FrameLayout implements
                 LayoutParams.MATCH_PARENT);
         exoPlayerView = new ExoPlayerView(getContext());
         exoPlayerView.setLayoutParams(layoutParams);
-
+        exoPlayerView.setFocusable(false);
+            
         addView(exoPlayerView, 0, layoutParams);
 
         mainHandler = new Handler();
