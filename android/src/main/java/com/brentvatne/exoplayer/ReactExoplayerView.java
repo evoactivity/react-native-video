@@ -825,7 +825,10 @@ class ReactExoplayerView extends FrameLayout implements
                 player.setPlayWhenReady(true);
             }
         } else {
-            player.setPlayWhenReady(false);
+            // ensure playback is not ENDED, else it will trigger another ended event
+            if (player.getPlaybackState() != Player.STATE_ENDED) {
+                player.setPlayWhenReady(false);
+            }
         }
     }
 
@@ -1853,5 +1856,9 @@ class ReactExoplayerView extends FrameLayout implements
                 removeViewAt(indexOfPC);
             }
         }
+    }
+
+    public void setSubtitleStyle(SubtitleStyle style) {
+        exoPlayerView.setSubtitleStyle(style);
     }
 }
